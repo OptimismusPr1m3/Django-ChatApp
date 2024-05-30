@@ -1,0 +1,18 @@
+.page-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+}
+.color-gray {
+  color: rgba(0, 0, 0, 0.4);
+}
+.form {
+  width: 500px;
+  height: 300px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
