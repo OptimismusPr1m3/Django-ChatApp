@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Registration</h1>
+<form class="form" action="/register/" method="post">
+    {% csrf_token %}
+    <!-- <input type="hidden" name="redirect" value="{{redirect}}"> -->
+    <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" type="text" name="username" id="uname">
+        <label class="mdl-textfield__label" for="uname">Username...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" type="text" name="mail" id="mail">
+        <label class="mdl-textfield__label" for="mail">E-Mail...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" type="password" name="password" id="pw">
+        <label class="mdl-textfield__label" for="pw">Your Password...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" type="password" name="password2" id="pw2">
+        <label class="mdl-textfield__label" for="pw2">Your Password again...</label>
+    </div>
+    <div>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            Create Account
+        </button>
+    </div>
+</form>
+{% endblock %}

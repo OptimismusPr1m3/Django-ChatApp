@@ -24,33 +24,18 @@
           <!-- Title -->
           {% if request.user.is_authenticated %}
           <span class="mdl-layout-title"
-            >Welcome, {{ request.user.first_name }}!</span
-          >
-          {% else %}
-          <span class="mdl-layout-title"
-            >Please <a href="/login/">Log In</a></span
-          >
+            >Welcome, {{ request.user.first_name }}!</span>
           {% endif %}
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-          </nav>
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                Logout
+            </button>
+          </form>
         </div>
       </header>
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Chatroom</span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-        </nav>
-      </div>
       <main class="mdl-layout__content">
         <div class="page-content">{% block content %} {% endblock %}</div>
       </main>

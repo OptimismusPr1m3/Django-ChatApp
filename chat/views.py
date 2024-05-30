@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import Chat, Message
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # Create your views here.
 
 @login_required(login_url='/login/') # wenn neimand angemeldet wird dieser weitergeleitet zum login -> django login annotation
@@ -27,3 +28,14 @@ def login_view(request):
         else:
             return render(request, 'login/login.html', {'wrongPassword':True, 'redirect':redirect})
     return render(request, 'login/login.html', {'redirect': redirect})
+
+def register_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        mail = request.POST['mail']
+        pw1 = request.POST['password']
+        pw2 = request.POST['password2']
+        if pw1 == pw2:
+            user = User.objects.create_user(username, mail, pw1)
+            return HttpResponseRedirect('/chat')
+    return render(request, 'auth/register.html')
